@@ -27,27 +27,3 @@ cat jobconf.json
 "queue": "default"
 }
 
-{'kind': 'spark'}
-headers = {'Content-Type': 'application/json'}
-
-curl -X POST https://kdavis-talend-demo-gateway.se-sandb.a465-9q4k.cloudera.site/kdavis-talend-demo/cdp-proxy-api/livy
-
-curl -k -v \
-     --user "kdavis" \
-     -X POST \
-     -H "Content-Type: application/json" \
-     -d "{}" \
-     https://kdavis-talend-demo-gateway.se-sandb.a465-9q4k.cloudera.site/kdavis-talend-demo/cdp-proxy-api/livy
-
-curl -k -v \
-     -u "kdavis" \
-     -H "Content-Type: application/json" \
-     -X POST \
-     -d '{"kind": "spark", "code": "sc.parallelize(List(1, 2, 3)).reduce(_*_);"}' \
-     https://kdavis-talend-demo-gateway.se-sandb.a465-9q4k.cloudera.site/kdavis-talend-demo/cdp-proxy-api/livy/batches
-
-
-
-
-
-
