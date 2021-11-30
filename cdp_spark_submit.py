@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore")
 class LivyCall:
   url: str ="https://kdavis-talend-demo-gateway.se-sandb.a465-9q4k.cloudera.site/kdavis-talend-demo/cdp-proxy-api/livy"
   username: str = "kdavis"
-  password: str = "6Satan!@#"
+  password: str = "<specify password>"
   jobConf:  str = "./jobconf.json"
   data:     str = field(init=False, repr=True, default="")
   
