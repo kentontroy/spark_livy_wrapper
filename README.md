@@ -1,3 +1,4 @@
+```
 spark-submit \
   --master yarn \
   --deploy-mode cluster \
@@ -8,7 +9,8 @@ spark-submit \
   --num-executors 3 \
   calculatePi.py \ 
 > results.txt 2>&1
-
+```
+```
 yarn logs --applicationId application_1638236186530_0028
 
 hdfs dfs -cp file:///opt/cloudera/parcels/CDH/jars/spark-examples_2.11-2.4.8.7.2.12.1-1.jar s3a://goes-se-sandbox01/kdavis-talend-demo/
@@ -26,4 +28,4 @@ cat jobconf.json
 "numExecutors": 3,
 "queue": "default"
 }
-
+```
