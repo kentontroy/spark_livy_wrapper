@@ -1,0 +1,53 @@
+spark-submit \
+  --master yarn \
+  --deploy-mode cluster \
+  --conf "spark.workflow.name=Estimate_Pi" \
+  --driver-memory 4g \
+  --executor-memory 2g \
+  --executor-cores 3  \
+  --num-executors 3 \
+  calculatePi.py \ 
+> results.txt 2>&1
+
+yarn logs --applicationId application_1638236186530_0028
+
+hdfs dfs -cp file:///opt/cloudera/parcels/CDH/jars/spark-examples_2.11-2.4.8.7.2.12.1-1.jar s3a://goes-se-sandbox01/kdavis-talend-demo/
+
+cat jobconf.json
+
+{
+"className":"org.apache.spark.examples.SparkPi",
+"args": [1000],
+"file":"s3a://goes-se-sandbox01/kdavis-talend-demo/spark-examples_2.11-2.4.8.7.2.12.1-1.jar",
+"driverMemory": "2G",
+"driverCores": 1,
+"executorCores": 2,
+"executorMemory": "4G",
+"numExecutors": 3,
+"queue": "default"
+}
+
+{'kind': 'spark'}
+headers = {'Content-Type': 'application/json'}
+
+curl -X POST https://kdavis-talend-demo-gateway.se-sandb.a465-9q4k.cloudera.site/kdavis-talend-demo/cdp-proxy-api/livy
+
+curl -k -v \
+     --user "kdavis" \
+     -X POST \
+     -H "Content-Type: application/json" \
+     -d "{}" \
+     https://kdavis-talend-demo-gateway.se-sandb.a465-9q4k.cloudera.site/kdavis-talend-demo/cdp-proxy-api/livy
+
+curl -k -v \
+     -u "kdavis" \
+     -H "Content-Type: application/json" \
+     -X POST \
+     -d '{"kind": "spark", "code": "sc.parallelize(List(1, 2, 3)).reduce(_*_);"}' \
+     https://kdavis-talend-demo-gateway.se-sandb.a465-9q4k.cloudera.site/kdavis-talend-demo/cdp-proxy-api/livy/batches
+
+
+
+
+
+

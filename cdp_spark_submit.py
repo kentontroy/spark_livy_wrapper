@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore")
 class LivyCall:
   url: str ="https://kdavis-talend-demo-gateway.se-sandb.a465-9q4k.cloudera.site/kdavis-talend-demo/cdp-proxy-api/livy"
   username: str = "kdavis"
-  password: str = "<specify password>"
+  password: str = "6Satan!@#"
   jobConf:  str = "./jobconf.json"
   data:     str = field(init=False, repr=True, default="")
   
@@ -57,9 +57,11 @@ def trackJob(c: LivyCall, respHdr: {}) -> None:
       logging.info(line)
       if status == "dead":
         raise ValueError("Job Failed: " + status)
-      if "progress" in stmtResp.json():
-        logging.info("Progress: " + str(stmtResp.json()["progress"]))
-      time.sleep(10)
+
+    if "progress" in stmtResp.json():
+      logging.info("Progress: " + str(stmtResp.json()["progress"]))
+
+    time.sleep(10)
 
 if __name__ == "__main__":
   logging.basicConfig(level=logging.INFO,
