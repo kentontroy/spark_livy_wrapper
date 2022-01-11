@@ -20,7 +20,7 @@ cat jobconf.json
 {
 "className":"org.apache.spark.examples.SparkPi",
 "args": [1000],
-"file":"s3a://goes-se-sandbox01/kdavis-talend-demo/spark-examples_2.11-2.4.8.7.2.12.1-1.jar",
+"file":"s3a://<S3 ENDPOINT>/kdavis-talend-demo/spark-examples_2.11-2.4.8.7.2.12.1-1.jar",
 "driverMemory": "2G",
 "driverCores": 1,
 "executorCores": 2,
