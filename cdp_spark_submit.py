@@ -10,9 +10,9 @@ warnings.filterwarnings("ignore")
 
 @dataclass
 class LivyCall:
-  url: str ="https://kdavis-talend-demo-gateway.se-sandb.a465-9q4k.cloudera.site/kdavis-talend-demo/cdp-proxy-api/livy"
-  username: str = "kdavis"
-  password: str = "6Satan!@#"
+  url: str ="https://<KNOX_HOST>/<ENDPOINT>/cdp-proxy-api/livy"
+  username: str = "<USERNAME>"
+  password: str = "<PASSWORD>"
   jobConf:  str = "./jobconf.json"
   data:     str = field(init=False, repr=True, default="")
   
